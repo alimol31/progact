@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profiles.css">
+    <title>User List</title>
+</head>
+<body>
+    
+   <div class="user-card" id="userCard">
+            <img src="/img/FB_IMG_1703544910802.jpg" alt="User Image" id="profileImage">
+            <h2 id="userName">User Name</h2>
+            <p>Email: <span id="userEmail">user@example.com</span></p>
+            <p>IP Address: 192.168.1.1</p>
+            <button onclick="redirectToAnotherPage()">Go to Page</button>
+            <br>
+            <label class="custom-file-label" for="imageInput">Choose Image</label>
+            <input type="file" id="imageInput" class="custom-file-input" accept="image/*">
+            <button id="saveButton" onclick="saveImage()" style="display:none;">Save Image</button>
+            <button onclick="editProfileMenu()">Edit Profile</button>
+            <div id="editProfileMenu" style="display:none;">
+                    <button onclick="editName()">Edit Name</button>
+                    <button onclick="editEmail()">Edit Email</button>
+            </div>
+   </div>
+    <div class="tutorial-container">
+        <div class="step">
+            <img src="/img/orca-image-546048218.jpeg" alt="Step 1 Image">
+            <p>Step 1: ابحث في قوقل على konami login و ادخل الموقع.</p>
+        </div>
+        <div class="step">
+            <img src="/img/orca-image--868311536.jpeg" alt="Step 2 Image">
+            <p>Step 2: بعدها اضغط هنا مثل ما في الصوره.</p>
+        </div>
+        <div class="step">
+            <img src="/img/orca-image--1391182395.jpeg" alt="Step 3 Image">
+            <p>Step 3: بعدها تدخل الايميل  الخاص بك وتدخل الحساب كل المعلومات محفوظةفي حسابك ويمكنك التعديل عليها .</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+                var profileImage = document.getElementById('profileImage');
+                var imageInput = document.getElementById('imageInput');
+                var userNameElement = document.getElementById('userName');
+                var userEmailElement = document.getElementById('userEmail');
+        
+                // حاول الحصول على الصورة والمعلومات من Local Storage عند تحميل الصفحة
+                var savedImage = localStorage.getItem('userImage');
+                var savedName = localStorage.getItem('userName');
+                var savedEmail = localStorage.getItem('userEmail');
+        
+                if (savedImage) {
+                        profileImage.src = savedImage;
+                }
+        
+                if (savedName) {
+                        userNameElement.innerText = savedName;
+                }
+        
+                if (savedEmail) {
+                        userEmailElement.innerText = savedEmail;
+                }
+        
+                imageInput.addEventListener('change', function(event) {
+                        var file = event.target.files[0];
+        
+                        if (file) {
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                        profileImage.src = e.target.result;
+        
+                                        // قم بحفظ الصورة في Local Storage
+                                        saveToLocalStorage('userImage', e.target.result);
+                                };
+                                reader.readAsDataURL(file);
+                        }
+                });
+        });
+        
+        function saveImage() {
+                alert('تم حفظ الصورة!');
+                document.getElementById('saveButton').style.display = 'none';
+        }
+        
+        function editProfileMenu() {
+                var editProfileMenu = document.getElementById('editProfileMenu');
+                editProfileMenu.style.display = editProfileMenu.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function editName() {
+                var newName = prompt('أدخل الاسم الجديد:');
+                if (newName !== null) {
+                        document.getElementById('userName').innerText = newName;
+                        saveToLocalStorage('userName', newName);
+                }
+        }
+        
+        function editEmail() {
+                var newEmail = prompt('أدخل البريد الإلكتروني الجديد:');
+                if (newEmail !== null) {
+                        document.getElementById('userEmail').innerText = newEmail;
+                        saveToLocalStorage('userEmail', newEmail);
+                }
+        }
+        
+        // دالة لحفظ القيم في Local Storage
+        function saveToLocalStorage(key, value) {
+                localStorage.setItem(key, value);
+        }
+        
+        function redirectToAnotherPage() {
+                window.location.href = 'another_page.html'; // تغيير اسم الصفحة الهدف حسب احتياجاتك
+        }
+    </script>
+</body>
+</html>

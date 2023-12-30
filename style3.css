@@ -1,0 +1,71 @@
+*{
+      margin: 0px;
+      
+      
+}
+table{
+        background-color: skyblue;
+}
+#cap{
+        background: sandybrown;
+        border: 1px solid black;
+        color: blue;
+        padding: 10px;
+        font-weight: bolder;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+thead tr{
+        background-color: brown;
+        text-align: center;
+        color: snow;
+}
+tbody tr{
+        background-color: lime;
+}
+tfoot tr td{
+        background-color: palevioletred;
+}
+tfoot{
+        
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

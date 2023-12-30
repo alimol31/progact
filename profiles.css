@@ -1,0 +1,86 @@
+body {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.user-card {
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    margin:auto;
+}
+
+.user-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.user-card button {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    color: #3498db;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-card button:hover {
+    background-color: #3498db;
+    color: white;
+}
+.tutorial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.step {
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.step img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.step p {
+    margin-bottom: 20px;
+    color: #3498db;
+}
+/* ستايل زر اختيار الصورة */
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-label {
+        display: inline-block;
+    background-color: #4CAF50; /* لون الخلفية */
+    color: #fff; /* لون النص */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin:10px;
+}
+
+.custom-file-input:hover + .custom-file-label {
+    background-color: #45a049; /* تغيير لون الخلفية عند التحويم */
+}

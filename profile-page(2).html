@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/profiles.css">
+    <title>Account</title>
+    <style>
+        #userCard {
+            display: block;
+            margin: 50px;
+        }
+
+        #editProfileMenu {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="user-card" id="userCard">
+        <img src="/img/FB_IMG_1703544910802.jpg" alt="User Image" id="profileImage">
+        <h2 id="userName">User Name</h2>
+        <p>Email: <span id="userEmail">user@example.com</span></p>
+        <p>ID : <span id="userId">user1</span></p>
+        <button onclick="redirectToAnotherPage()">Go to Page</button>
+        <br>
+        <label class="custom-file-label" for="imageInput">Choose Image</label>
+        <input type="file" id="imageInput" class="custom-file-input" accept="image/*">
+        <button id="saveButton" onclick="saveImage()" style="display:none;">Save Image</button>
+        <button onclick="editProfileMenu()">Edit Profile</button>
+        <div id="editProfileMenu">
+            <button onclick="editName()">Edit Name</button>
+            <button onclick="editEmail()">Edit Email</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var profileImage = document.getElementById('profileImage');
+            var imageInput = document.getElementById('imageInput');
+            var userNameElement = document.getElementById('userName');
+            var userEmailElement = document.getElementById('userEmail');
+            var userId = 'user1'; // افترض أن هناك معرّف فريد لكل مستخدم
+
+            // تحقق من وجود بيانات البروفايل للمعرّف وإذا لم تكن موجودة، قم بإنشاء مصفوفة جديدة
+            var profilesData = JSON.parse(localStorage.getItem('profilesData')) || {};
+
+            // تحقق من وجود بيانات البروفايل للمعرّف الحالي وقم بتحديث الصفحة بناءً على هذه البيانات
+            if (profilesData[userId]) {
+                updateProfileData(profilesData[userId]);
+            }
+
+            imageInput.addEventListener('change', function (event) {
+                var file = event.target.files[0];
+
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        profileImage.src = e.target.result;
+
+                        // قم بتحديث بيانات البروفايل في المصفوفة وفي Local Storage
+                        profilesData[userId] = profilesData[userId] || {};
+                        profilesData[userId].image = e.target.result;
+                        saveToLocalStorage('profilesData', JSON.stringify(profilesData));
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        function saveImage() {
+            alert('تم حفظ الصورة!');
+            document.getElementById('saveButton').style.display = 'none';
+        }
+
+        function editName() {
+            var newName = prompt('أدخل الاسم الجديد:');
+            if (newName !== null) {
+                document.getElementById('userName').innerText = newName;
+
+                // قم بتحديث بيانات البروفايل في المصفوفة وفي Local Storage
+                profilesData[userId] = profilesData[userId] || {};
+                profilesData[userId].name = newName;
+                saveToLocalStorage('profilesData', JSON.stringify(profilesData));
+            }
+        }
+
+        function editEmail() {
+            var newEmail = prompt('أدخل البريد الإلكتروني الجديد:');
+            if (newEmail !== null) {
+                document.getElementById('userEmail').innerText = newEmail;
+
+                // قم بتحديث بيانات البروفايل في المصفوفة وفي Local Storage
+                profilesData[userId] = profilesData[userId] || {};
+                profilesData[userId].email = newEmail;
+                saveToLocalStorage('profilesData', JSON.stringify(profilesData));
+            }
+        }
+
+        function updateProfileData(profileData) {
+            if (profileData.image) {
+                document.getElementById('profileImage').src = profileData.image;
+            }
+
+            if (profileData.name) {
+                document.getElementById('userName').innerText = profileData.name;
+            }
+
+            if (profileData.email) {
+                document.getElementById('userEmail').innerText = profileData.email;
+            }
+        }
+
+        function saveToLocalStorage(key, value) {
+            localStorage.setItem(key, value);
+        }
+
+        function redirectToAnotherPage() {
+            window.location.href = 'www.facebook.com/100050605021823'; // تغيير اسم الصفحة الهدف حسب احتياجاتك
+        }
+    </script>
+</body>
+
+</html>
