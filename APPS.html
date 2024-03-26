@@ -67,33 +67,169 @@
   outline: none;
   
 }
-.mods , .app-mods{
-        display: flex;
-        flex-wrap: wrap;
-        margin: 10px;
-        
+
+
+
+
+
+
+
+.scroll-1::-webkit-scrollbar {
+  width: 80px;
+  height: 8px;
 }
-.text1 {
-display: inline-flex;
+
+.scroll-1::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #888;
 }
-.gtas , .gtav {
-        margin: 27px;
-        margin-bottom: 10px;
-        
-        
+
+.container * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: #fff;
 }
-div {
-        margin-top: 10px;
-        text-align: center ;
-        justify-content: space-between;
-        padding: 5px;
-        text-decoration: none;
+
+.container {
+  display: flex;
+  overflow-x: scroll;
+  padding: 24px;
+  width: 350px;
+  scroll-snap-type: x mandatory;
+  scroll-padding-top: 24px;
+  border-radius: 8px;
+  gap: 20px;
 }
-.p1 , .p2 {
-        border: 2px solid black ;
-        background-color: #333;
-        border-radius: 20%;
-        
+
+.container .card {
+  flex: 0 0 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #141414;
+  scroll-snap-align: start;
+}
+
+.card .card__image {
+  flex: 1;
+  height: 140px;
+}
+
+.card:nth-child(1) .card__image {
+  background-image: linear-gradient(
+      to right top,
+      #051937, 
+      #004d7a, 
+      #008793, 
+      #00bf72, 
+      #a8eb12
+  );
+}
+
+.card:nth-child(2) .card__image {
+  background-image: linear-gradient(
+    to right top, 
+    #dc09a5, 
+    #ce00b4, 
+    #ba00c5, 
+    #9c00d8, 
+    #6f12eb
+  );
+}
+
+.card:nth-child(3) .card__image {
+  background-image: linear-gradient(
+    to right top, 
+    #dc1009, 
+    #e55f00, 
+    #e49200, 
+    #dac000, 
+    #c7eb12
+  );
+}
+
+.card .card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.card .card__content .card__title {
+  font-size: 32px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.card .card__content .card__describe {
+  color: #fff;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+.button {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #17795E;
+  background-color: #209978;
+  overflow: hidden;
+}
+
+.button, .button__icon, .button__text {
+  transition: all 0.3s;
+}
+
+.button .button__text {
+  transform: translateX(22px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #17795E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button .svg {
+  width: 20px;
+  fill: #fff;
+}
+
+.button:hover {
+  background: #17795E;
+}
+
+.button:hover .button__text {
+  color: transparent;
+}
+
+.button:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button:active .button__icon {
+  background-color: #146c54;
+}
+
+.button:active {
+  border: 1px solid #146c54;
 }
         </style>
 </head>
@@ -101,7 +237,7 @@ div {
         
         <ul class="nav">
   <li><a id="action" href="/home.html">Home</a></li>
-  <li><a href="/password.html">storage</a></li>
+  <li><a href="/storage.html">storage</a></li>
   <li><a href="/Contact.html">contact</a></li>
   <li><a href="/About.html">about</a></li>
   <li><a href="/login.html">login</a></li>
@@ -114,22 +250,107 @@ div {
   </li>
 </ul>
    <h3>games mod</h3>
-    <div class="mods">
-        
-        <div class="p1">
-        <a href="/gtasan.html"><img class="gtas" width="66px" src="/download76386.png" alt=""></a><br>gta san andreas 
-        </div>
-        <div class="p2" >
-<a href="/gtav.html">
-<img class="gtav" width="66px" src="/download66.jpeg" alt=""></a><br>gta v mobile
-        </div>
-        </div>
-        <h3 class="text1">app mod </h3>
-        <div class="mods">
-        <div class="p1" ><a href="/djezzyapp.html">
-<img class="gtav" width="66px" src="/18-2.png" alt=""></a><br>djezzy app<br>
-        </div>
+ <div class="container scroll-1">
+  <div class="card">
+    <div class="card__image">
+            <img width="360px" height="140px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtYd4bRLVCePKnnPv7hNWF4PzR2O7dIKOIDg&usqp=CAU" alt="/download76386.png">
     </div>
+    <div class="card__content">
+        <span class="card__title">gta san andreas</span>
+        <p class="card__describe">
+        تقع أحداث اللعبة في ولاية سان أندرياس شبه الخيالية التي تحتوي على ثلاثة مدن رئيسية: لوس سانتوس، مبنية على مدينة لوس أنجلوس وسان فييرو مبنية على مدينة سان فرانسيسكو ولاس فينتورس المبنية على مدينة لاس فيغاس وتفصل بين هذه المدن مساحات شاسعة من الريف والبلدات الصغيرة. تدور قصة اللعبة حول عضو العصابة كارل جونسون (بالإنجليزية: Carl Johnson)‏ ويلقب "CJ" الذي يعود إلى لوس سانتوس قادماً من ليبرتي سيتي، بعد سماع خبر مقتل والدته. يجد CJ أصدقائه القدامى وعائلته في حالة فوضى. وعلى مدار اللعبة، يكشف CJ تدريجياً الحقيقة خلف مقتل والدته.
+        </p>
+        <button onclick="click2()" type="submit" class="button">
+  <span class="button__text">Download</span>
+  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card__image">
+        <img width="350px" height="140px" src="/download.jpeg" alt="" />
+    </div>
+    <div class="card__content">
+        <span class="card__title">Modern Age 2 Premium mod</span>
+        <p class="card__describe">
+            In Modern Age 2, you take on the role of the president of one of the modern states and are tasked with enacting a strategy that covers geopolitics, the economy, and the military. How prepared are you to take the helm as Russian or the United States president? Is your country’s government prepared to allow Afghanistan or Syria to assume leadership of the Middle East? This game is not available for Android devices.
+        </p>
+         <button onclick="click4()" class="button">
+  <span class="button__text">Download</span>
+  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+</button>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card__image">
+        <img width="350px" height="140px" src="/download (1).jpeg" alt="" />
+    </div>
+    <div class="card__content">
+        <span class="card__title">bully mod</span>
+        <p class="card__describe">
+            لعبة Bully مهكرة هي لعبة فيديو رائعة وقديمة من تطوير شركة ( Rockstar Games ) الشهيرة في عالم الألعاب والتي قدمت لنا سلسلة ألعاب ( Grand Theft Auto ) أو ( GTA ) المعروفة في كٌل أنحاء العالم, ولكن بالحديث عن لعبة بولي مهكرة من ميديا فاير دعنا نخبرك أنها مختلفة وحصرية في الفكرة الخاصة بها وكذلك في طريقة لعبها الأساسية
+        </p>
+         <button onclick="click3()" class="button">
+  <span class="button__text">Download</span>
+  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+</button>
+    </div>
+  </div>
+</div>
+ <h2>apks mods</h2>
+ <div class="container scroll-1">
+  <div class="card">
+    <div class="card__image">
+            <img width="300px" height="140px" src="/18-2.png" alt="/18-2.png">
+    </div>
+    <div class="card__content">
+        <span class="card__title">Djezzy / دجيزي مهكره</span>
+        <p class="card__describe">
+            تحميل دجيزي مهكره مجانا
+            dawnload apk
+            
+        </p>
+        
+        <button onclick="click1()" type="submit" class="button">
+  <span class="button__text">Download</span>
+  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card__image">
+    </div>
+    <div class="card__content">
+        <span class="card__title">coming soon</span>
+        <p class="card__describe">
+            coming soon .....
+        </p>
+    </div>
+  </div>
+</div>
 </body>
-
+   <script>
+        function click1() {
+        
+        window.location.href = 'https://www.mediafire.com/file/4qrek5kh7ebx1wq/Djezzy_mod_apk_%2528%25D8%25B9%25D9%2584%25D9%258A%2529.apk/file'
+        }
+        function click2() {
+        
+        window.location.href = '/gtasan.html'
+        }
+        function click3() {
+        
+        window.location.href = 'https://www.mediafire.com/file/o11muox9akyyeqr/BULLY-MOD-NORMAL-APK+DATA.rar/file'
+        }
+        function click4() {
+        
+        window.location.href = 'https://www.mediafire.com/file/w0sh6axzmolxrc2/Modern_Age_2_Premium_mod_apk_by%25E2%259C%25A6ali%25E2%259C%25A6/file'
+        }
+        function opllh77() {
+        
+        alert("قريبا.....")
+        
+        
+        }
+   </script>
 </html>
